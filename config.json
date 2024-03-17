@@ -13,20 +13,12 @@
   ],
 
   "battalionEmbed": {
-    "title": "Choose a battalion!",
-    "description": "\uD83C\uDF4E The 212th Extermination Battalion, lead by Cpl. Ayedhan, is a fierce battalion focused on strength in numbers and superior tactics. We go to great lengths to accomplish the mission and aid in the conquest for Super Earth.\n\n\uD83C\uDF40 Shamrock Company led by “Trench Wall” Paddy and 'BigRed' Obi, is made up of Helldivers that are primarily focused on the defense and recovery of conquered worlds. With 4 leafed clovers from super earth and the blessing of Lady Luck, Goddess Fortuna, guide us all in our conquest for liberation and prosperity. \n\n\uD83C\uDE51  Led by Chief Bergy, the Dragonfire Battalion is a dedicated group of highly 'capable' Helldivers. Committed to completing the mission and making sure to burn all those who stand in our way. Casualties are to be expected and honored we can and WILL die for the cause. Burn Strong Helldivers ❤\uFE0F\u200D\uD83D\uDD25 \n\n☄\uFE0F The Diving Eagles 101st Division, led by Solar RxShx. They train both veterans and newcomers and teach them the ways of the shadows. By lurking in the shadows, they drop behind enemy lines, hunting those who plan to disrupt the flow of Democracy and freedom for all. \n\n\uD83C\uDF00 Led by Captain Que, the Helldivers 501st Legion is a tight-knit squadron of Helldivers that are known for their courage, unconventional tactics, and loyalty to Super Earth. \n\n\uD83D\uDC19 Bad Company is a squad of elite Divers, primed for specialized warfare, constantly adapting their arsenal for missions that champion democracy. No matter the cause, you belong with us. \n\n\uD83C\uDF31 Led by Desmond 'The Chef' Doss, Cook's Battalion is a war hardened battalion of Helldivers who were boots on ground when the first wave of Automatons attacked at Malevelon Creek. They will fight bugs and bots for the sake of the Chef.`) \n\n\uD83D\uDD31 Led by the Saint, the Church of Democracy only celebrates one religion; freedom. As a member of the church, their main objective is to spread the ideals of freedom and democracy amongst all the planets. And with plenty of resources from Super Earth High Command and blessings from a higher power, church-goers have no issues with spreading their ideals across the universe. \n\n🚀 The Ad Astra Corps is the Exploratory specialists of the Helldivers; deploying to areas of operations and making sure no stone is left unturned and no Bot Factory or Bug Hole is left standing. Focusing on two simple concepts, “Everyone fights, no one gets left behind.” To The Stars! \n\n\uD83D\uDD25 Led by Major Southpaw, the Hellbound Battalion is a company where valor meets vengeance and courage melds with chaos. Forged in the fires of adversity, they strike fear into the hearts of their adversaries and stand as a beacon of hope for their allies.",
-    "color": "#0099ff"
+    "title": "",
+    "description": "",
+    "color": ""
   },
 
   "timezones": [
-    {
-      "name": "",
-      "emoji": ""
-    },
-    {
-      "name": "",
-      "emoji": ""
-    },
     {
       "name": "",
       "emoji": ""
@@ -39,11 +31,5 @@
     "color": ""
   },
 
-  "permissions":
-  [
-    "1212606547964862464",
-    "1209945297321730098",
-    "1212971338831241258",
-    "1209390603817848842"
-  ]
+  "permissions": []
 }
