@@ -119,7 +119,7 @@ async function deleteMessage(channel, message, guildName) {
     }
 }
 
-module.exports = { saveValue, loadValue, clearValue, deleteMessage, delay, info_, error_, action_, reaction_ };
+module.exports = { chalk, saveValue, loadValue, clearValue, deleteMessage, delay, info_, error_, action_, reaction_ };
 
 //TODO
 // SlashCommands Handler

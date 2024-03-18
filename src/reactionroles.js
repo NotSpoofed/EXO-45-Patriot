@@ -1,7 +1,6 @@
 const { EmbedBuilder, Messages, MessageManager } = require('discord.js');
-const { saveValue, clearValue, delay, info_, error_, action_, reaction_ } = require('./functions.js');
+const { chalk, saveValue, clearValue, delay, info_, error_, action_, reaction_ } = require('./functions.js');
 const config = require('../config.json');
-const chalk = require('../node_modules/chalk');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 async function reactRoles(channel, message, menuName) {

@@ -1,12 +1,11 @@
 const { Client } = require('discord.js');
-const chalk = require('../node_modules/chalk');
-const { info_, error_, action_, reaction_ } = require('./functions.js');
+const { chalk, info_, error_, action_, reaction_ } = require('./functions.js');
 
 async function handleRoleAdd(member, role, guildName) {
     let privateRole = member.guild.roles.cache.find(r => r.name === 'Private');
     let recruitRole = member.guild.roles.cache.find(r => r.name === 'Recruit');
     let level = 1; // Assume level 1 for now
-    let newNickname = `${role.prefix} ${member.user.username} | ${'LVL '} ${level}`;
+    let newNickname = `${role.prefix} ${member.user.username.capitalize()} | ${'LVL '} ${level}`;
 
     if (newNickname.length > 32) {
         newNickname = newNickname.substring(0, 32); // Truncate the nickname if it's too long
@@ -34,7 +33,7 @@ async function handleRoleAdd(member, role, guildName) {
 async function handleRoleRemove(member, role) {
     let privateRole = member.guild.roles.cache.find(r => r.name === 'Private');
     let recruitRole = member.guild.roles.cache.find(r => r.name === 'Recruit');
-    const newNickname = member.user.username;
+    const newNickname = member.user.username.capitalize();
 
     await member.setNickname(newNickname);
 
