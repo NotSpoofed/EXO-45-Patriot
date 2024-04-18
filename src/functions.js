@@ -1,24 +1,8 @@
 const { Client } = require('discord.js');
-const chalk = require('../node_modules/chalk');
 const fs = require('fs');
 
 async function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
-}
-function info_() {
-    return chalk.green('[') + chalk.green(chalk.bold('Info')) + chalk.green(']');
-}
-
-function error_() {
-    return chalk.yellow('[') + chalk.yellow(chalk.bold('Warn')) + chalk.yellow(']');
-}
-
-function action_() {
-    return chalk.cyan('[') + chalk.cyan(chalk.bold('Action')) + chalk.cyan(']');
-}
-
-function reaction_() {
-    return chalk.cyan('[') + chalk.cyan(chalk.bold('Reaction')) + chalk.cyan(']');
 }
 
 function saveValue(guildId, battalionMenuChannel, battalionMenuMessage, timezoneMenuChannel, timezoneMenuMessage ) {
@@ -64,10 +48,9 @@ function loadValue(guildId) {
                 return json[guildId];
             }
         }
-        return null;
     } catch (err) {
-        console.error(error_(), 'Error loading value:', err);
-        return null;
+        //console.error(error_(), 'Error loading value:', err);
+        return;
     }
 }
 
@@ -90,10 +73,10 @@ function clearValue(all, guildId, menuName) {
 
             fs.writeFileSync('./src/data.json', JSON.stringify(data));
         } else {
-            console.error(error_(), 'Guild ID not found:', guildId);
+            //console.error(error_(), 'Guild ID not found:', guildId);
         }
     } catch (err) {
-        console.error(error_(), 'Error clearing value:', err);
+        //console.error(error_(), 'Error clearing value:', err);
     }
 }
 
@@ -101,25 +84,25 @@ function clearValue(all, guildId, menuName) {
 async function deleteMessage(channel, message, guildName) {
 
     if (!channel.id) {
-        console.error(error_(), 'Invalid channel ID found while deleting message');
+        //console.error(error_(), 'Invalid channel ID found while deleting message');
         return;
     }
 
     try {
         if (!message.id) {
-            console.error(error_(), 'Invalid message ID found while deleting message');
+            //console.error(error_(), 'Invalid message ID found while deleting message');
             return;
         }
 
         await message.delete();
-        console.log(action_(), chalk.magenta(guildName), `Deleted menu with ID: ${chalk.green(message.id)}`);
+        //console.log(action_(), chalk.magenta(guildName), `Deleted menu with ID: ${chalk.green(message.id)}`);
 
     } catch (error) {
-        console.error(error_(), 'Error deleting message:', err);
+        //console.error(error_(), 'Error deleting message:', err);
     }
 }
 
-module.exports = { chalk, saveValue, loadValue, clearValue, deleteMessage, delay, info_, error_, action_, reaction_ };
+module.exports = { saveValue, loadValue, clearValue, deleteMessage, delay};
 
 //TODO
 // SlashCommands Handler

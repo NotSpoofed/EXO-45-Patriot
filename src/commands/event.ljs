@@ -1,0 +1,51 @@
+    /*
+
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const { EmbedBuilder } = require('discord.js');
+const config = require('../../config.json');
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('event')
+        .setDescription('Create an event!')
+        .addStringOption(option =>
+    option.setName('title')
+        .setDescription('Choose the title for your event.')
+        .setRequired(true)
+    )
+        .addStringOption(option =>
+    option.setName('description')
+        .setDescription('Write the description for your event.')
+        .setRequired(true)
+    )
+        .addStringOption(option =>
+    option.setName('date')
+        .setDescription('Choose the date for your event.')
+        .setRequired(true)
+    ),
+    async execute(interaction) {
+        const { options } = interaction;
+        let message;
+
+        async function event() {
+
+            const title = options.getString('title');
+            const description = options.getString('description');
+            const date = options.getString('date');
+
+            const embed = new EmbedBuilder()
+                .setTitle(title)
+                .setDescription(description)
+                .setFooter({text: date})
+                .setTimestamp()
+                .setColor(config.eventEmbed.color);
+
+            return message = await interaction.channel.send({ embeds: [embed] });
+        }
+
+        event();
+    }
+}
+    */
+
+//TODO Add timestamp date depending on the date they input

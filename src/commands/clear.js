@@ -1,24 +1,21 @@
-const { chalk, info_, error_, action_, reaction_ } = require('../functions.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { permissions } = require('../../config.json');
+const { clearCommand } = require('../../config.json');
+const { log } = require('../console/chalk.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('clear')
-        .setDescription('Clear a certain amount of messages.'),
-    options: [
-        {
-            name: 'amount',
-            description: 'Choose an amount 1-100',
-            type: 4,
-            required: true
-        }
-    ],
+        .setDescription('Clear a certain amount of messages.')
+        .addIntegerOption(option =>
+    option.setName('amount')
+        .setDescription('Choose an amount 1-100')
+        .setRequired(true)
+    ),
     async execute(interaction) {
         if (interaction.member && interaction.member.roles) {
             const { options, user } = interaction;
             const channel = bot.channels.cache.get(interaction.channel.id);
-            const roleIds = permissions;
+            const roleIds = clearCommand;
             const hasRole = roleIds.some(roleId => interaction.member.roles.cache.has(roleId));
             if (hasRole) {
                 let amount_ = options.getInteger('amount');
@@ -26,7 +23,7 @@ module.exports = {
                     await interaction.reply({ content: `Please choose a number between **1** and **100**`, ephemeral: true });
                 } else {
                     await interaction.reply({ content: `Deleted ${amount_} message(s)`, ephemeral: true });
-                    console.log(action_(), `${chalk.yellow(interaction.user.tag.capitalize())} has deleted ${amount_} messages.`);
+                    log('action', interaction.guild.name, `${interaction.user.username.capitalize()} has deleted ${amount_} message(s) in ${channel.name}`);
                     let messages = await channel.messages.fetch({ limit: amount_ });
                     await channel.bulkDelete(messages);
                 }

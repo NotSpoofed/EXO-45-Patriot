@@ -1,4 +1,5 @@
 {
+  "clientId": "",
   "guild": [],
   "token": "",
 
@@ -31,5 +32,16 @@
     "color": ""
   },
 
-  "permissions": []
+  "ranks": [{}],
+
+  "eventEmbed": {
+      "color": "#0099ff"
+  },
+
+  "clearCommand": [],
+
+  "reactionRoleCommand": [],
+
+  "muteCommand": []
+
 }

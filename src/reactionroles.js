@@ -1,5 +1,6 @@
 const { EmbedBuilder, Messages, MessageManager } = require('discord.js');
-const { chalk, saveValue, clearValue, delay, info_, error_, action_, reaction_ } = require('./functions.js');
+const { saveValue, clearValue, delay } = require('./functions.js');
+const { log } = require('./console/chalk.js');
 const config = require('../config.json');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
@@ -18,7 +19,7 @@ async function reactRoles(channel, message, menuName) {
         try {
             await message.react(role);
         } catch (err) {
-            console.error(error_(), 'Failed to react:', err);
+            //console.error(error_(), 'Failed to react:', err);
         }
     }
 }
@@ -36,7 +37,7 @@ async function battalionMenu(channel, guildId, guildName, menuName) {
     const newChannel = channel;
     const message = await newChannel.send({ embeds: [embed] });
 
-    console.log(action_(), chalk.magenta(guildName),`Created menu with ID: ${chalk.green(message.id)}`);
+    //console.log(action_(), chalk.magenta(guildName),`Created menu with ID: ${chalk.green(message.id)}`);
     saveValue(guildId, newChannel.id, message.id, null, null);
 
     setTimeout(() => {
@@ -57,7 +58,7 @@ async function timezoneMenu(channel, guildId, guildName, menuName) {
     const newChannel = channel;
     const message = await newChannel.send({ embeds: [embed] });
 
-    console.log(action_(), chalk.magenta(guildName),`Created menu with ID: ${chalk.green(message.id)}`);
+    //console.log(action_(), chalk.magenta(guildName),`Created menu with ID: ${chalk.green(message.id)}`);
     saveValue(guildId, null, null, newChannel.id, message.id);
 
     setTimeout(() => {
@@ -72,6 +73,9 @@ async function reactionRoleMenu(menuInstance, channel, interaction, guildId, gui
     } else if (!message && interaction){
         await interaction.reply({ content: `Creating **${menuName}** reaction role menu!`, ephemeral: true });
     }
+
+    log('action', interaction.guild.name, `${interaction.user.username.capitalize()} has created a ${menuName} menu in ${channel.name}!`);
+
     switch (menuName) {
         case 'battalions':
             if (!menuInstance) {

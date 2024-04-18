@@ -1,38 +1,33 @@
-const { chalk, loadValue, clearValue,deleteMessage, delay, info_, error_, action_, reaction_ } = require('../functions.js');
+const { loadValue, clearValue, deleteMessage, delay } = require('../functions.js');
 const { reactionRoleMenu } = require('../reactionroles.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { permissions } = require('../../config.json');
+const { reactionRoleCommand } = require('../../config.json');
+const { log } = require('../console/chalk.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('reactionrole')
-        .setDescription('Create a reaction role menu.'),
-    options: [
-        {
-            name: 'menu',
-            description: 'Choose a menu.',
-            type: 3, // INTEGER type
-            required: true,
-            choices: [
-                { name: 'Battalions', value: 'battalions' },
-                { name: 'Timezones', value: 'timezones' }
-            ]
-        }
-    ],
+        .setDescription('Create a reaction role menu.')
+        .addStringOption(option =>
+    option.setName('menu')
+        .setDescription('Choose a menu.')
+        .setRequired(true)
+        .addChoices(
+        { name: 'Battalions', value: 'battalions' },
+        { name: 'Timezones', value: 'timezones' }
+    )),
     async execute(interaction) {
         const { options, guildId } = interaction;
         const { battalionMenuChannel, battalionMenuMessage, timezoneMenuChannel, timezoneMenuMessage } = loadValue(guildId) || {};
         const guildName = bot.guilds.cache.get(guildId).name;
         const channel = bot.channels.cache.get(interaction.channel.id);
-        const roleIds = permissions;
+        const roleIds = reactionRoleCommand;
         if (interaction.member && interaction.member.roles) {
             const hasRole = roleIds.some(roleId => interaction.member.roles.cache.has(roleId));
             if (hasRole) {
                 let menuName = options.getString('menu');
                 let menuInstance;
                 let menuChannel;
-
-                console.log(info_(), `Received menu name: ${chalk.green(menuName)}`);
 
                 if (menuName === 'battalions') {
                     menuInstance = battalionMenuMessage;
@@ -55,7 +50,7 @@ module.exports = {
                             commandExecutionPromise = Promise.resolve();
                         }
                     } catch (error) {
-                        console.error(error_(), 'Error fetching or deleting message:', error.message);
+                        log('warn', guildName, `Menu has been deleted or does not exist!`);
                         await interaction.reply({ content: 'An error has occurred. Resolving error.', ephemeral: true });
                         await clearValue(true);
                         await delay(1000);
